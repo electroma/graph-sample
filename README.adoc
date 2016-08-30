@@ -2,14 +2,12 @@
 
 === Core features
 
-* Parallel parse
-* URL filter
-* Slow response / too big / error code handling
-* Pluggable persistence options (inmem or persistent)
-* Pluggable results output (plain objects / graph / console )
+* Load file content into directed graph
+* Uses http://jgrapht.org/[jgrapht] for graph manipulation
 
 === Possible optimizations / TODOs
 
+* File charset parameter
 * Parallel grapth data load
 * Progressive check (may not to wait for full graph completion)
 * Alternative path search algorithm

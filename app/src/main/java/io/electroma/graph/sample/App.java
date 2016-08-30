@@ -15,7 +15,7 @@ import static org.jgrapht.alg.DijkstraShortestPath.findPathBetween;
 
 public class App {
 
-    public static final Splitter SPLITTER = Splitter.on(',').trimResults().omitEmptyStrings();
+    private static final Splitter SPLITTER = Splitter.on(',').trimResults().omitEmptyStrings();
 
     public static void main(final String[] args) {
         checkArgument(args.length == 3, "Please provide exactly three arguments delimited by spaces: file cityFrom cityTo");
@@ -30,16 +30,18 @@ public class App {
                                 "There is incorrect input (there must be two city names delimited by comma) in line " + line);
                         return GraphLoader.Vertex.of(chunks.get(0), chunks.get(1));
                     }));
-            System.out.println(checkPath(args, graph) ? "Yes" : "No");
+            System.out.println(checkPath(graph, args[1], args[2]) ? "Yes" : "No");
 
         } catch (IOException e) {
             throw new IllegalArgumentException("Unreadable input file", e);
         }
     }
 
-    private static boolean checkPath(String[] args, DirectedGraph<String, DefaultEdge> graph) {
+    private static boolean checkPath(final DirectedGraph<String, DefaultEdge> graph,
+                                     final String from,
+                                     final String to) {
         try {
-            return findPathBetween(graph, args[1], args[2]) != null;
+            return findPathBetween(graph, from, to) != null;
         } catch (IllegalArgumentException e) {
             return false;
         }

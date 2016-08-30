@@ -24,4 +24,4 @@ _mvn clean package assembly:single_
 
 === Run
 
-_java -jar app/target/graph-sample-app [path/to/file] [pointA] [pointB]
+_java -jar app/target/graph-sample-app [path/to/file] [pointA] [pointB]_

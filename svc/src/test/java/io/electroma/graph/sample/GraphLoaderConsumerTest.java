@@ -1,7 +1,7 @@
 package io.electroma.graph.sample;
 
 import com.google.common.collect.ImmutableSet;
-import io.electroma.graph.sample.GraphLoaderConsumer.Vertex;
+import io.electroma.graph.sample.GraphLoader.Vertex;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultEdge;
@@ -22,7 +22,7 @@ public class GraphLoaderConsumerTest {
                 new HashMap.SimpleEntry<>("B", "C"),
                 new HashMap.SimpleEntry<>("B", "C"),
                 new HashMap.SimpleEntry<>("A", "C")
-        ).collect(GraphLoaderConsumer.toDirectedGraph(e -> Vertex.of(e.getKey(), e.getValue())));
+        ).collect(GraphLoader.toDirectedGraph(e -> Vertex.of(e.getKey(), e.getValue())));
 
         assertEquals(ImmutableSet.of("A", "B", "C"), collect.vertexSet());
 

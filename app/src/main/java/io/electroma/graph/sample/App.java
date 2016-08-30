@@ -24,13 +24,13 @@ public class App {
 
         try {
             final DirectedGraph<String, DefaultEdge> graph = Files.lines(inputPath)
-                    .collect(GraphLoaderConsumer.toDirectedGraph(line -> {
+                    .collect(GraphLoader.toDirectedGraph(line -> {
                         final List<String> chunks = SPLITTER.splitToList(line);
                         checkArgument(chunks.size() == 2,
                                 "There is incorrect input (there must be two city names delimited by comma) in line " + line);
-                        return GraphLoaderConsumer.Vertex.of(chunks.get(0), chunks.get(1));
+                        return GraphLoader.Vertex.of(chunks.get(0), chunks.get(1));
                     }));
-            System.out.println(checkPath(args, graph));
+            System.out.println(checkPath(args, graph) ? "Yes" : "No");
 
         } catch (IOException e) {
             throw new IllegalArgumentException("Unreadable input file", e);

@@ -6,26 +6,10 @@ import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 
 import java.util.Objects;
-import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.stream.Collector;
 
-public class GraphLoaderConsumer<T> implements BiConsumer<T, T> {
-
-    private final DirectedGraph<T, DefaultEdge> graph;
-
-    public GraphLoaderConsumer() {
-        this(new DefaultDirectedGraph<>(DefaultEdge.class));
-    }
-
-    public GraphLoaderConsumer(final DirectedGraph<T, DefaultEdge> graph) {
-        this.graph = graph;
-    }
-
-    @Override
-    public void accept(final T s, final T s2) {
-
-    }
+public class GraphLoader {
 
     public static <S, R> Collector<S, ?, ? extends DirectedGraph<R, DefaultEdge>> toDirectedGraph(Function<S, Vertex<R>> transformer) {
         return Collector.of(() -> new DefaultDirectedGraph<>(DefaultEdge.class),
